@@ -1,0 +1,41 @@
+generator client {
+  provider = "prisma-client-js"
+  output   = "../app/generated/prisma"
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+model recipe {
+  rid          Int         @id @default(autoincrement())
+  name         String
+  description  String
+  type         recipe_type
+  cookingtime  Int
+  ingredients  Json
+  instructions Json
+  image        String
+  uid          Int
+  user         user        @relation(fields: [uid], references: [uid], map: "Recipe_uid_fkey")
+
+  @@index([uid], map: "Recipe_uid_fkey")
+}
+
+model user {
+  uid      Int      @id @default(autoincrement())
+  username String
+  password String
+  email    String   @unique(map: "User_email_key")
+  recipe   recipe[]
+}
+
+enum recipe_type {
+  French
+  Italian
+  Chinese
+  Indian
+  Mexican
+  others
+}
