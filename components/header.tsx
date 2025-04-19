@@ -48,14 +48,13 @@ const Header = () => {
                 </Button>
             </div>
             {loggedIn ? (
-    <Button variant="ghost" onClick={handleLogout}>Logout</Button>
-) : (
-    <div className="flex items-center gap-2">
-        <Button variant="ghost" disabled={pathname === "/auth/login"} onClick={handleLogin}>Login</Button>
-        <Button variant="default" disabled={pathname === "/auth/register"} onClick={handleSignup}>Register</Button>
-    </div>
-)}
-
+                <Button variant="ghost" onClick={handleLogout}>Logout</Button>
+            ) : (
+                <div className="flex items-center gap-2">
+                    <Button variant="ghost" disabled={pathname === "/auth/login"} onClick={handleLogin}>Login</Button>
+                    <Button variant="default" disabled={pathname === "/auth/register"} onClick={handleSignup}>Register</Button>
+                </div>
+            )}
         </div>
     );
 };

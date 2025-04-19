@@ -1025,6 +1025,8 @@ export namespace Prisma {
     description: string | null
     type: $Enums.recipe_type | null
     cookingtime: number | null
+    ingredients: string | null
+    instructions: string | null
     image: string | null
     uid: number | null
   }
@@ -1035,6 +1037,8 @@ export namespace Prisma {
     description: string | null
     type: $Enums.recipe_type | null
     cookingtime: number | null
+    ingredients: string | null
+    instructions: string | null
     image: string | null
     uid: number | null
   }
@@ -1071,6 +1075,8 @@ export namespace Prisma {
     description?: true
     type?: true
     cookingtime?: true
+    ingredients?: true
+    instructions?: true
     image?: true
     uid?: true
   }
@@ -1081,6 +1087,8 @@ export namespace Prisma {
     description?: true
     type?: true
     cookingtime?: true
+    ingredients?: true
+    instructions?: true
     image?: true
     uid?: true
   }
@@ -1190,8 +1198,8 @@ export namespace Prisma {
     description: string
     type: $Enums.recipe_type
     cookingtime: number
-    ingredients: JsonValue
-    instructions: JsonValue
+    ingredients: string
+    instructions: string
     image: string
     uid: number
     _count: RecipeCountAggregateOutputType | null
@@ -1258,8 +1266,8 @@ export namespace Prisma {
       description: string
       type: $Enums.recipe_type
       cookingtime: number
-      ingredients: Prisma.JsonValue
-      instructions: Prisma.JsonValue
+      ingredients: string
+      instructions: string
       image: string
       uid: number
     }, ExtArgs["result"]["recipe"]>
@@ -1637,8 +1645,8 @@ export namespace Prisma {
     readonly description: FieldRef<"recipe", 'String'>
     readonly type: FieldRef<"recipe", 'recipe_type'>
     readonly cookingtime: FieldRef<"recipe", 'Int'>
-    readonly ingredients: FieldRef<"recipe", 'Json'>
-    readonly instructions: FieldRef<"recipe", 'Json'>
+    readonly ingredients: FieldRef<"recipe", 'String'>
+    readonly instructions: FieldRef<"recipe", 'String'>
     readonly image: FieldRef<"recipe", 'String'>
     readonly uid: FieldRef<"recipe", 'Int'>
   }
@@ -3027,33 +3035,11 @@ export namespace Prisma {
   export type SortOrder = (typeof SortOrder)[keyof typeof SortOrder]
 
 
-  export const JsonNullValueInput: {
-    JsonNull: typeof JsonNull
-  };
-
-  export type JsonNullValueInput = (typeof JsonNullValueInput)[keyof typeof JsonNullValueInput]
-
-
-  export const JsonNullValueFilter: {
-    DbNull: typeof DbNull,
-    JsonNull: typeof JsonNull,
-    AnyNull: typeof AnyNull
-  };
-
-  export type JsonNullValueFilter = (typeof JsonNullValueFilter)[keyof typeof JsonNullValueFilter]
-
-
-  export const QueryMode: {
-    default: 'default',
-    insensitive: 'insensitive'
-  };
-
-  export type QueryMode = (typeof QueryMode)[keyof typeof QueryMode]
-
-
   export const recipeOrderByRelevanceFieldEnum: {
     name: 'name',
     description: 'description',
+    ingredients: 'ingredients',
+    instructions: 'instructions',
     image: 'image'
   };
 
@@ -3096,20 +3082,6 @@ export namespace Prisma {
 
 
   /**
-   * Reference to a field of type 'Json'
-   */
-  export type JsonFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Json'>
-    
-
-
-  /**
-   * Reference to a field of type 'QueryMode'
-   */
-  export type EnumQueryModeFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'QueryMode'>
-    
-
-
-  /**
    * Reference to a field of type 'Float'
    */
   export type FloatFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Float'>
@@ -3128,8 +3100,8 @@ export namespace Prisma {
     description?: StringFilter<"recipe"> | string
     type?: Enumrecipe_typeFilter<"recipe"> | $Enums.recipe_type
     cookingtime?: IntFilter<"recipe"> | number
-    ingredients?: JsonFilter<"recipe">
-    instructions?: JsonFilter<"recipe">
+    ingredients?: StringFilter<"recipe"> | string
+    instructions?: StringFilter<"recipe"> | string
     image?: StringFilter<"recipe"> | string
     uid?: IntFilter<"recipe"> | number
     user?: XOR<UserScalarRelationFilter, userWhereInput>
@@ -3158,8 +3130,8 @@ export namespace Prisma {
     description?: StringFilter<"recipe"> | string
     type?: Enumrecipe_typeFilter<"recipe"> | $Enums.recipe_type
     cookingtime?: IntFilter<"recipe"> | number
-    ingredients?: JsonFilter<"recipe">
-    instructions?: JsonFilter<"recipe">
+    ingredients?: StringFilter<"recipe"> | string
+    instructions?: StringFilter<"recipe"> | string
     image?: StringFilter<"recipe"> | string
     uid?: IntFilter<"recipe"> | number
     user?: XOR<UserScalarRelationFilter, userWhereInput>
@@ -3191,8 +3163,8 @@ export namespace Prisma {
     description?: StringWithAggregatesFilter<"recipe"> | string
     type?: Enumrecipe_typeWithAggregatesFilter<"recipe"> | $Enums.recipe_type
     cookingtime?: IntWithAggregatesFilter<"recipe"> | number
-    ingredients?: JsonWithAggregatesFilter<"recipe">
-    instructions?: JsonWithAggregatesFilter<"recipe">
+    ingredients?: StringWithAggregatesFilter<"recipe"> | string
+    instructions?: StringWithAggregatesFilter<"recipe"> | string
     image?: StringWithAggregatesFilter<"recipe"> | string
     uid?: IntWithAggregatesFilter<"recipe"> | number
   }
@@ -3255,8 +3227,8 @@ export namespace Prisma {
     description: string
     type: $Enums.recipe_type
     cookingtime: number
-    ingredients: JsonNullValueInput | InputJsonValue
-    instructions: JsonNullValueInput | InputJsonValue
+    ingredients: string
+    instructions: string
     image: string
     user: userCreateNestedOneWithoutRecipeInput
   }
@@ -3267,8 +3239,8 @@ export namespace Prisma {
     description: string
     type: $Enums.recipe_type
     cookingtime: number
-    ingredients: JsonNullValueInput | InputJsonValue
-    instructions: JsonNullValueInput | InputJsonValue
+    ingredients: string
+    instructions: string
     image: string
     uid: number
   }
@@ -3278,8 +3250,8 @@ export namespace Prisma {
     description?: StringFieldUpdateOperationsInput | string
     type?: Enumrecipe_typeFieldUpdateOperationsInput | $Enums.recipe_type
     cookingtime?: IntFieldUpdateOperationsInput | number
-    ingredients?: JsonNullValueInput | InputJsonValue
-    instructions?: JsonNullValueInput | InputJsonValue
+    ingredients?: StringFieldUpdateOperationsInput | string
+    instructions?: StringFieldUpdateOperationsInput | string
     image?: StringFieldUpdateOperationsInput | string
     user?: userUpdateOneRequiredWithoutRecipeNestedInput
   }
@@ -3290,8 +3262,8 @@ export namespace Prisma {
     description?: StringFieldUpdateOperationsInput | string
     type?: Enumrecipe_typeFieldUpdateOperationsInput | $Enums.recipe_type
     cookingtime?: IntFieldUpdateOperationsInput | number
-    ingredients?: JsonNullValueInput | InputJsonValue
-    instructions?: JsonNullValueInput | InputJsonValue
+    ingredients?: StringFieldUpdateOperationsInput | string
+    instructions?: StringFieldUpdateOperationsInput | string
     image?: StringFieldUpdateOperationsInput | string
     uid?: IntFieldUpdateOperationsInput | number
   }
@@ -3302,8 +3274,8 @@ export namespace Prisma {
     description: string
     type: $Enums.recipe_type
     cookingtime: number
-    ingredients: JsonNullValueInput | InputJsonValue
-    instructions: JsonNullValueInput | InputJsonValue
+    ingredients: string
+    instructions: string
     image: string
     uid: number
   }
@@ -3313,8 +3285,8 @@ export namespace Prisma {
     description?: StringFieldUpdateOperationsInput | string
     type?: Enumrecipe_typeFieldUpdateOperationsInput | $Enums.recipe_type
     cookingtime?: IntFieldUpdateOperationsInput | number
-    ingredients?: JsonNullValueInput | InputJsonValue
-    instructions?: JsonNullValueInput | InputJsonValue
+    ingredients?: StringFieldUpdateOperationsInput | string
+    instructions?: StringFieldUpdateOperationsInput | string
     image?: StringFieldUpdateOperationsInput | string
   }
 
@@ -3324,8 +3296,8 @@ export namespace Prisma {
     description?: StringFieldUpdateOperationsInput | string
     type?: Enumrecipe_typeFieldUpdateOperationsInput | $Enums.recipe_type
     cookingtime?: IntFieldUpdateOperationsInput | number
-    ingredients?: JsonNullValueInput | InputJsonValue
-    instructions?: JsonNullValueInput | InputJsonValue
+    ingredients?: StringFieldUpdateOperationsInput | string
+    instructions?: StringFieldUpdateOperationsInput | string
     image?: StringFieldUpdateOperationsInput | string
     uid?: IntFieldUpdateOperationsInput | number
   }
@@ -3412,29 +3384,6 @@ export namespace Prisma {
     notIn?: $Enums.recipe_type[]
     not?: NestedEnumrecipe_typeFilter<$PrismaModel> | $Enums.recipe_type
   }
-  export type JsonFilter<$PrismaModel = never> =
-    | PatchUndefined<
-        Either<Required<JsonFilterBase<$PrismaModel>>, Exclude<keyof Required<JsonFilterBase<$PrismaModel>>, 'path'>>,
-        Required<JsonFilterBase<$PrismaModel>>
-      >
-    | OptionalFlat<Omit<Required<JsonFilterBase<$PrismaModel>>, 'path'>>
-
-  export type JsonFilterBase<$PrismaModel = never> = {
-    equals?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | JsonNullValueFilter
-    path?: string
-    mode?: QueryMode | EnumQueryModeFieldRefInput<$PrismaModel>
-    string_contains?: string | StringFieldRefInput<$PrismaModel>
-    string_starts_with?: string | StringFieldRefInput<$PrismaModel>
-    string_ends_with?: string | StringFieldRefInput<$PrismaModel>
-    array_starts_with?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | null
-    array_ends_with?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | null
-    array_contains?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | null
-    lt?: InputJsonValue
-    lte?: InputJsonValue
-    gt?: InputJsonValue
-    gte?: InputJsonValue
-    not?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | JsonNullValueFilter
-  }
 
   export type UserScalarRelationFilter = {
     is?: userWhereInput
@@ -3471,6 +3420,8 @@ export namespace Prisma {
     description?: SortOrder
     type?: SortOrder
     cookingtime?: SortOrder
+    ingredients?: SortOrder
+    instructions?: SortOrder
     image?: SortOrder
     uid?: SortOrder
   }
@@ -3481,6 +3432,8 @@ export namespace Prisma {
     description?: SortOrder
     type?: SortOrder
     cookingtime?: SortOrder
+    ingredients?: SortOrder
+    instructions?: SortOrder
     image?: SortOrder
     uid?: SortOrder
   }
@@ -3533,32 +3486,6 @@ export namespace Prisma {
     _count?: NestedIntFilter<$PrismaModel>
     _min?: NestedEnumrecipe_typeFilter<$PrismaModel>
     _max?: NestedEnumrecipe_typeFilter<$PrismaModel>
-  }
-  export type JsonWithAggregatesFilter<$PrismaModel = never> =
-    | PatchUndefined<
-        Either<Required<JsonWithAggregatesFilterBase<$PrismaModel>>, Exclude<keyof Required<JsonWithAggregatesFilterBase<$PrismaModel>>, 'path'>>,
-        Required<JsonWithAggregatesFilterBase<$PrismaModel>>
-      >
-    | OptionalFlat<Omit<Required<JsonWithAggregatesFilterBase<$PrismaModel>>, 'path'>>
-
-  export type JsonWithAggregatesFilterBase<$PrismaModel = never> = {
-    equals?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | JsonNullValueFilter
-    path?: string
-    mode?: QueryMode | EnumQueryModeFieldRefInput<$PrismaModel>
-    string_contains?: string | StringFieldRefInput<$PrismaModel>
-    string_starts_with?: string | StringFieldRefInput<$PrismaModel>
-    string_ends_with?: string | StringFieldRefInput<$PrismaModel>
-    array_starts_with?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | null
-    array_ends_with?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | null
-    array_contains?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | null
-    lt?: InputJsonValue
-    lte?: InputJsonValue
-    gt?: InputJsonValue
-    gte?: InputJsonValue
-    not?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | JsonNullValueFilter
-    _count?: NestedIntFilter<$PrismaModel>
-    _min?: NestedJsonFilter<$PrismaModel>
-    _max?: NestedJsonFilter<$PrismaModel>
   }
 
   export type RecipeListRelationFilter = {
@@ -3765,29 +3692,6 @@ export namespace Prisma {
     _min?: NestedEnumrecipe_typeFilter<$PrismaModel>
     _max?: NestedEnumrecipe_typeFilter<$PrismaModel>
   }
-  export type NestedJsonFilter<$PrismaModel = never> =
-    | PatchUndefined<
-        Either<Required<NestedJsonFilterBase<$PrismaModel>>, Exclude<keyof Required<NestedJsonFilterBase<$PrismaModel>>, 'path'>>,
-        Required<NestedJsonFilterBase<$PrismaModel>>
-      >
-    | OptionalFlat<Omit<Required<NestedJsonFilterBase<$PrismaModel>>, 'path'>>
-
-  export type NestedJsonFilterBase<$PrismaModel = never> = {
-    equals?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | JsonNullValueFilter
-    path?: string
-    mode?: QueryMode | EnumQueryModeFieldRefInput<$PrismaModel>
-    string_contains?: string | StringFieldRefInput<$PrismaModel>
-    string_starts_with?: string | StringFieldRefInput<$PrismaModel>
-    string_ends_with?: string | StringFieldRefInput<$PrismaModel>
-    array_starts_with?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | null
-    array_ends_with?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | null
-    array_contains?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | null
-    lt?: InputJsonValue
-    lte?: InputJsonValue
-    gt?: InputJsonValue
-    gte?: InputJsonValue
-    not?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | JsonNullValueFilter
-  }
 
   export type userCreateWithoutRecipeInput = {
     username: string
@@ -3836,8 +3740,8 @@ export namespace Prisma {
     description: string
     type: $Enums.recipe_type
     cookingtime: number
-    ingredients: JsonNullValueInput | InputJsonValue
-    instructions: JsonNullValueInput | InputJsonValue
+    ingredients: string
+    instructions: string
     image: string
   }
 
@@ -3847,8 +3751,8 @@ export namespace Prisma {
     description: string
     type: $Enums.recipe_type
     cookingtime: number
-    ingredients: JsonNullValueInput | InputJsonValue
-    instructions: JsonNullValueInput | InputJsonValue
+    ingredients: string
+    instructions: string
     image: string
   }
 
@@ -3887,8 +3791,8 @@ export namespace Prisma {
     description?: StringFilter<"recipe"> | string
     type?: Enumrecipe_typeFilter<"recipe"> | $Enums.recipe_type
     cookingtime?: IntFilter<"recipe"> | number
-    ingredients?: JsonFilter<"recipe">
-    instructions?: JsonFilter<"recipe">
+    ingredients?: StringFilter<"recipe"> | string
+    instructions?: StringFilter<"recipe"> | string
     image?: StringFilter<"recipe"> | string
     uid?: IntFilter<"recipe"> | number
   }
@@ -3899,8 +3803,8 @@ export namespace Prisma {
     description: string
     type: $Enums.recipe_type
     cookingtime: number
-    ingredients: JsonNullValueInput | InputJsonValue
-    instructions: JsonNullValueInput | InputJsonValue
+    ingredients: string
+    instructions: string
     image: string
   }
 
@@ -3909,8 +3813,8 @@ export namespace Prisma {
     description?: StringFieldUpdateOperationsInput | string
     type?: Enumrecipe_typeFieldUpdateOperationsInput | $Enums.recipe_type
     cookingtime?: IntFieldUpdateOperationsInput | number
-    ingredients?: JsonNullValueInput | InputJsonValue
-    instructions?: JsonNullValueInput | InputJsonValue
+    ingredients?: StringFieldUpdateOperationsInput | string
+    instructions?: StringFieldUpdateOperationsInput | string
     image?: StringFieldUpdateOperationsInput | string
   }
 
@@ -3920,8 +3824,8 @@ export namespace Prisma {
     description?: StringFieldUpdateOperationsInput | string
     type?: Enumrecipe_typeFieldUpdateOperationsInput | $Enums.recipe_type
     cookingtime?: IntFieldUpdateOperationsInput | number
-    ingredients?: JsonNullValueInput | InputJsonValue
-    instructions?: JsonNullValueInput | InputJsonValue
+    ingredients?: StringFieldUpdateOperationsInput | string
+    instructions?: StringFieldUpdateOperationsInput | string
     image?: StringFieldUpdateOperationsInput | string
   }
 
@@ -3931,8 +3835,8 @@ export namespace Prisma {
     description?: StringFieldUpdateOperationsInput | string
     type?: Enumrecipe_typeFieldUpdateOperationsInput | $Enums.recipe_type
     cookingtime?: IntFieldUpdateOperationsInput | number
-    ingredients?: JsonNullValueInput | InputJsonValue
-    instructions?: JsonNullValueInput | InputJsonValue
+    ingredients?: StringFieldUpdateOperationsInput | string
+    instructions?: StringFieldUpdateOperationsInput | string
     image?: StringFieldUpdateOperationsInput | string
   }
 

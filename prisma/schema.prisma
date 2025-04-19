@@ -14,8 +14,8 @@ model recipe {
   description  String
   type         recipe_type
   cookingtime  Int
-  ingredients  Json
-  instructions Json
+  ingredients  String      @db.LongText
+  instructions String      @db.LongText
   image        String
   uid          Int
   user         user        @relation(fields: [uid], references: [uid], map: "Recipe_uid_fkey")
